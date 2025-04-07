@@ -9,8 +9,8 @@ class CrispCal {
 	private array $event = [];
 	private string $name;
 
-	public function event(string $id = null) : CrispCalEvent {
-		$event = new CrispCalEvent($id);
+	public function event(?string $uid = null) : CrispCalEvent {
+		$event = new CrispCalEvent($uid);
 		$this->event[] = $event;
 		return $event;
 	}
@@ -29,6 +29,7 @@ class CrispCal {
 		foreach($this->event as $event) {
 			$str .= (string) $event;
 		}
+
 		$str .= CrispCalOutput::text('END','VCALENDAR');
 		return $str;
 	}
