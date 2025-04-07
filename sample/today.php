@@ -1,0 +1,19 @@
+<?php
+/*
+CrispCal is licensed under the Apache License 2.0 license
+https://github.com/TRP-Solutions/crisp-cal/blob/master/LICENSE
+*/
+declare(strict_types=1);
+require_once __DIR__.'/../lib/CrispCal.php';
+
+$cal = new CrispCal();
+$event = $cal->event('meeting@crisp-cal');
+$event->start('10:00');
+$event->end('12:00');
+$event->summary('CrispCal: Strategical meeting');
+
+$event->alarm('12 minutes');
+$event->alarm('7 minutes');
+
+CrispCalOutput::header('meeting');
+echo $cal;
