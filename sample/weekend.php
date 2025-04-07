@@ -9,7 +9,7 @@ require_once __DIR__.'/../lib/CrispCal.php';
 $cal = new CrispCal();
 $cal->name('CrispCal Work');
 
-$event = $cal->event();
+$event = $cal->event('development@crisp-cal');
 $event->summary('CrispCal: Development');
 $event->location('Kelingking Beach');
 $event->url('https://github.com/TRP-Solutions/crisp-cal/issues/');

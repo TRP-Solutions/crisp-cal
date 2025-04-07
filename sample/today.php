@@ -6,6 +6,8 @@ https://github.com/TRP-Solutions/crisp-cal/blob/master/LICENSE
 declare(strict_types=1);
 require_once __DIR__.'/../lib/CrispCal.php';
 
+date_default_timezone_set('Europe/Copenhagen');
+
 $cal = new CrispCal();
 $event = $cal->event('meeting@crisp-cal');
 $event->start('10:00');
