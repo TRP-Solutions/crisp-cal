@@ -126,7 +126,7 @@ class CrispCalEvent {
 		if(isset($this->summary)) $str .= CrispCalOutput::text('SUMMARY',$this->summary);
 		if(isset($this->location)) $str .= CrispCalOutput::text('LOCATION',$this->location);
 		if(isset($this->description)) $str .= CrispCalOutput::text('DESCRIPTION',$this->description);
-		if(isset($this->url)) $str .= CrispCalOutput::text('URL:',$this->url);
+		if(isset($this->url)) $str .= CrispCalOutput::text('URL',$this->url);
 
 		foreach($this->alarm as $alarm) {
 			$str .= (string) $alarm;
@@ -155,7 +155,7 @@ class CrispCalAlarm {
 		$str .= CrispCalOutput::duration('TRIGGER',$this->trigger);
 		$str .= CrispCalOutput::text('ACTION','DISPLAY');
 
-		if(isset($this->description)) $str .= 'DESCRIPTION:'.$this->description.PHP_EOL;
+		if(isset($this->description)) $str .= CrispCalOutput::text('DESCRIPTION',$this->description);
 
 		$str .= CrispCalOutput::text('END','VALARM');
 		return $str;
@@ -166,7 +166,7 @@ class CrispCalOutput {
 	const NEWLINE = "\r\n";
 
 	public static function text(string $parameter, string $value) : string {
-		$replace_pairs = ['\\'=>'\\\\',';'=>'\\,',';'=>'\\,',"\r"=>'',"\n"=>'\\n'];
+		$replace_pairs = ['\\'=>'\\\\',';'=>'\\;',','=>'\\,',"\r"=>'',"\n"=>'\\n'];
 		return $parameter.':'.strtr($value,$replace_pairs).self::NEWLINE;
 	}
 	public static function datetime(string $parameter, object $value) : string {
