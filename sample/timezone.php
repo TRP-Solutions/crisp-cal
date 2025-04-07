@@ -11,13 +11,17 @@ date_default_timezone_set('Europe/Copenhagen');
 $cal = new CrispCal();
 $event = $cal->event('travel@crisp-cal');
 
-$start = new Datetime('10:15',new DateTimeZone('Europe/Lisbon'));
+$start = new LocalDatetime('10:15',new DateTimeZone('Europe/Lisbon'));
 $event->start($start);
 
-$end = new Datetime('13:45',new DateTimeZone('Europe/Tallinn'));
+$end = new LocalDatetime('13:45',new DateTimeZone('Europe/Tallinn'));
 $event->end($end);
 
 $event->summary('CrispCal: Travel');
 
 CrispCalOutput::header('travel');
 echo $cal;
+
+class LocalDatetime extends Datetime {
+	// Tests extended classes
+}

@@ -11,11 +11,11 @@ date_default_timezone_set('Europe/Copenhagen');
 $cal = new CrispCal();
 $event = $cal->event('meeting@crisp-cal');
 $event->start('10:00');
-$event->end('12:00');
+$event->duration('2 hours');
 $event->summary('CrispCal: Strategical meeting');
 
 $event->alarm('12 minutes');
-$event->alarm('7 minutes');
+$event->alarm(new DateInterval('PT7M'));
 
 CrispCalOutput::header('meeting');
 echo $cal;

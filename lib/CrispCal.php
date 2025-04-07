@@ -56,30 +56,30 @@ class CrispCalEvent {
 		$this->dtstamp = new DateTime();
 		$this->dtstamp->setTimezone(new DateTimeZone('UTC'));
 	}
-	public function start(object|string $date) : void {
-		if(gettype($date)=='object') {
+	public function start(DateTime|string $date) : void {
+		if($date instanceof DateTime) {
 			$this->dtstart = clone $date;
 		} else {
 			$this->dtstart = new DateTime($date);
 		}
 		$this->dtstart->setTimezone(new DateTimeZone('UTC'));
 	}
-	public function end(object|string $date) : void {
+	public function end(DateTime|string $date) : void {
 		if(!isset($this->dtstart)) {
 			throw new \Exception('CrispCalEvent start not set');
 		}
-		if(gettype($date)=='object') {
+		if($date instanceof DateTime) {
 			$this->dtend = clone $date;
 		} else {
 			$this->dtend = new DateTime($date);
 		}
 		$this->dtend->setTimezone(new DateTimeZone('UTC'));
 	}
-	public function duration(object|string $input) : void {
+	public function duration(DateInterval|string $input) : void {
 		if(!isset($this->dtstart)) {
 			throw new \Exception('CrispCalEvent start not set');
 		}
-		if(gettype($input)=='object') {
+		if($input instanceof DateInterval) {
 			$interval = $input;
 		}
 		else {
@@ -142,7 +142,7 @@ class CrispCalAlarm {
 	private DateInterval $trigger;
 
 	public function __construct(DateInterval|string $trigger) {
-		if(gettype($trigger)=='object') {
+		if($trigger instanceof DateInterval) {
 			$this->trigger = $trigger;
 		}
 		else {
