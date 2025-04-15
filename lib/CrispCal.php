@@ -151,6 +151,10 @@ class CrispCalAlarm {
 		}
 	}
 
+	public function description(string $value) : void {
+		$this->description = $value;
+	}
+
 	public function __toString() : string {
 		$str = CrispCalOutput::text('BEGIN','VALARM');
 		$str .= CrispCalOutput::duration('TRIGGER',$this->trigger);
