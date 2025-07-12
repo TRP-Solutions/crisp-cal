@@ -7,8 +7,8 @@ declare(strict_types=1);
 
 define('TITLE','crisp-cal :: sample');
 
-require_once('../../git_heal-document/lib/HealDocument.php'); // https://github.com/TRP-Solutions/heal-document
-$doc = new HealDocument();
+require_once('../../heal-document/lib/HealDocument.php'); // https://github.com/TRP-Solutions/heal-document
+$doc = new \TRP\HealDocument\HealDocument();
 $html = $doc->el('html');
 $head = $html->el('head');
 $head->el('title')->te(TITLE);
