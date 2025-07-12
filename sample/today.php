@@ -14,7 +14,7 @@ $event->start('10:00');
 $event->duration('2 hours');
 $event->summary('CrispCal: Strategical meeting');
 
-$event->alarm('12 minutes');
+$event->alarm('12 minutes')->description('Rally up!');
 $event->alarm(new DateInterval('PT7M'));
 
 CrispCalOutput::header('meeting');
